@@ -1,0 +1,272 @@
+/* Importing Google Font */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700;900&display=swap");
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Root variables for consistency */
+:root {
+  --primary-color: #0067b8;
+  --secondary-color: #fdc800;
+  --text-color: #fff;
+  --font-weight-bold: 700;
+  --font-weight-normal: 400;
+  --font-size-large: 40px;
+  --font-size-medium: 18px;
+  --font-size-small: 16px;
+  --transition-speed: 0.3s;
+  --border-radius: 25px;
+}
+
+/* Body styling */
+body {
+  background-color: white;
+  font-size: var(--font-size-small);
+  color: #333;
+}
+
+/* Header Styling */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  padding: 20px 30px;
+  font-size: var(--font-size-large);
+  font-weight: var(--font-weight-bold);
+  border-bottom: 2px solid var(--secondary-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-width: 100%;
+  z-index: 10;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo */
+.logo img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Navigation Styling */
+.nav {
+  display: flex;
+  gap: 15px;
+}
+
+.nav .fa {
+  cursor: pointer;
+  padding: 10px;
+  font-size: 24px;
+  transition: opacity var(--transition-speed), transform var(--transition-speed);
+}
+
+.nav .fa-search {
+  opacity: 0.5;
+  font-weight: var(--font-weight-normal);
+}
+
+.nav .fa-search:hover {
+  opacity: 1;
+  color: var(--secondary-color);
+  transform: scale(1.1);
+}
+
+.nav .fa:hover {
+  opacity: 0.8;
+}
+
+/* Main Content */
+.main {
+  margin-top: 100px; /* Offset header */
+  padding: 20px;
+}
+
+/* Research section */
+.research {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 0 40px;
+}
+
+.research .new,
+.research .cbe,
+.research .rju {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  padding: 30px;
+  transition: background-color var(--transition-speed),
+    opacity var(--transition-speed);
+}
+
+.research .new h2:hover,
+.research .cbe h2:hover,
+.research .rju h2:hover {
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.research .new:hover,
+.research .cbe:hover,
+.research .rju:hover {
+  opacity: 0.9;
+  background-color: var(--secondary-color);
+}
+
+.research .new h2,
+.research .cbe h2,
+.research .rju h2 {
+  font-size: var(--font-size-medium);
+}
+
+/* Footer Styling */
+footer p {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  padding: 20px;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Welcome Message Section */
+.welcome-message {
+  margin: 80px;
+}
+
+.welcome-message h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.welcome-message h3 {
+  color: var(--primary-color);
+  margin: 20px 0;
+  font-size: medium;
+}
+
+.welcome-message p {
+  margin: 15px 0;
+}
+
+.welcome-message #text {
+  padding: 15px 0;
+  line-height: 1.55;
+  font-size: var(--font-size-small);
+  max-width: 800px;
+}
+
+button {
+  background-color: var(--text-color);
+  border: solid 1px var(--secondary-color);
+  width: 140px;
+  height: 50px;
+  margin: 40px 0;
+  border-radius: var(--border-radius);
+  font-weight: var(--font-weight-bold);
+  text-transform: capitalize;
+  font-size: large;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color var(--transition-speed), transform 0.2s ease,
+    box-shadow var(--transition-speed);
+}
+
+button:hover {
+  color: var(--text-color);
+  background-color: var(--secondary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Advanced Responsive Design */
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .main {
+    margin-top: 120px;
+  }
+
+  .research {
+    flex-direction: row;
+    gap: 30px;
+  }
+
+  .header {
+    position: static;
+    top: 0;
+    padding: 25px 50px;
+    font-size: 50px;
+  }
+}
+
+/* Tablet to Large Screens (768px to 1200px) */
+@media (max-width: 1199px) and (min-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 36px;
+    padding: 15px 25px;
+  }
+
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 15px;
+  }
+
+  .welcome-message {
+    margin: 40px;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .research {
+    flex-direction: column;
+    margin: 20px 30px;
+  }
+}
+
+/* Mobile Devices (up to 768px) */
+@media (max-width: 767px) {
+  .header {
+    font-size: 28px;
+    padding: 15px 20px;
+  }
+
+  .nav {
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .main {
+    padding: 10px;
+  }
+
+  .research {
+    flex-direction: column;
+    margin: 20px;
+  }
+
+  .welcome-message {
+    margin: 20px;
+  }
+
+  button {
+    width: 100%;
+  }
+}

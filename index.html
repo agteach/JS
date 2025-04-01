@@ -3,15 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>passenger counter</title>
+    <title>Weather App</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>People entered</h1>
-    <h2 id="count-el">0</h2>
-    <button id="increment-btn" onclick="increment()">Incremant</button>
-    <button id="save-btn" onclick="save()">Save</button>
-    <p id="save-el">Previous enter</p>
+
+    <div class="card">
+        <h1>Weather App</h1>
+        <div class="search">
+            <input type="text" id="cityInput" placeholder="Enter city name">
+            <button onclick="fetchWeather()">Search</button>
+        </div>
+
+        <p id="loading" style="display: none;">Loading weather data...</p>
+
+        <div class="weather" id="weather">
+            <h2 id="cityName">Loading...</h2>
+            <h1 id="temp">--°C</h1>
+            <img id="weatherIcon" src="" alt="Weather Icon">
+            <p id="description">--</p>
+
+            <div class="details">
+                <div>Humidity: <span id="humidity">--%</span></div>
+                <div>Wind: <span id="wind">-- m/s</span></div>
+            </div>
+        </div>
+
+        <div class="error" id="errorMsg" style="display: none;">Please enter a valid city name!</div>
+    </div>
+
     <script src="index.js"></script>
 </body>
 </html>

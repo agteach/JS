@@ -1,33 +1,36 @@
-// // let count = 0
-// // let countEl = document.getElementById("count-el")
-// // console.log(countEl)
-// // function increment(){
-// //     count = count+1
-// //     countEl.innerText=count
-// //    // console.log(count)
-// // }
-// // function save(){
-// //   console.log(count)
-// // }
-// // //save()
-// let name="Abdi"
-// let greeting="Hi, my name is "
-// let myGreeting=greeting+name
-// console.log(myGreeting)
-let saveEL = document.getElementById("save-el")
-console.log(saveEL)
-let countEl = document.getElementById("count-el")
-console.log(countEl)
-let count=0
+const apiKey = "d611bd3dea5df12032d0ea8f56b53ab1"; 
 
-function increment(){
-   count+=1
-   countEl.textContent=count
-}
-function save(){
-    let saveAS =count+"-"
-    saveEL.textContent+=saveAS
-    count = 0
-    countEl.textContent = count
+async function fetchWeather() {
+    const city = document.getElementById("cityInput").value.trim() || "Jimma";
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
+    document.getElementById("loading").style.display = "block"; 
+    document.getElementById("errorMsg").style.display = "none";
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error("City not found!");
+
+        const data = await response.json();
+        console.log("Weather Data:", data);
+
+        document.getElementById("cityName").innerText = data.name;
+        document.getElementById("temp").innerText = `${Math.round(data.main.temp)}°C`;
+       document.getElementById("weatherIcon").src = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+        document.getElementById("description").innerText = data.weather[0].description;
+        document.getElementById("humidity").innerText = `${data.main.humidity}%`;
+        document.getElementById("wind").innerText = `${data.wind.speed} m/s`;
+
+        document.getElementById("weather").classList.add("active");
+    } catch (error) {
+        console.error("Fetch error:", error);
+        document.getElementById("errorMsg").innerText = error.message;
+        document.getElementById("errorMsg").style.display = "block";
+        document.getElementById("weather").classList.remove("active");
+    } finally {
+        document.getElementById("loading").style.display = "none";
+    }
 }
+
+
+window.onload = fetchWeather;
